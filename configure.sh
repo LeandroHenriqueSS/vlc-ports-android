@@ -47,17 +47,20 @@ NM="${CROSS_COMPILE}nm" \
 STRIP="${CROSS_COMPILE}strip" \
 RANLIB="${CROSS_COMPILE}ranlib" \
 AR="${CROSS_COMPILE}ar" \
-sh $VLC_SOURCEDIR/configure --host=$TARGET_TUPLE --build=x86_64-unknown-linux $EXTRA_PARAMS \
-                --enable-live555 --enable-realrtsp \
+MODULE_LITE=1 \
+sh $VLC_SOURCEDIR/configure --host=arm-linux-androideabi --build=x86_64-unknown-linux $EXTRA_PARAMS \
+                --disable-live555 --disable-realrtsp \
                 --enable-avformat \
                 --enable-swscale \
                 --enable-avcodec \
-                --enable-opus \
+                --disable-opus \
                 --enable-opensles \
                 --enable-android-surface \
-                --enable-mkv \
-                --enable-taglib \
+                --enable-debug \
+                --disable-mkv \
+                --disable-taglib \
                 --enable-dvbpsi \
+                --disable-freetype \
                 --disable-vlc --disable-shared \
                 --disable-update-check \
                 --disable-vlm \
@@ -93,10 +96,10 @@ sh $VLC_SOURCEDIR/configure --host=$TARGET_TUPLE --build=x86_64-unknown-linux $E
                 --disable-skins2 \
                 --disable-mtp \
                 --disable-notify \
-                --enable-libass \
+                --disable-libass \
                 --disable-svg \
                 --disable-udev \
-                --enable-libxml2 \
+                --disable-libxml2 \
                 --disable-caca \
                 --disable-glx \
                 --disable-egl \
@@ -104,7 +107,10 @@ sh $VLC_SOURCEDIR/configure --host=$TARGET_TUPLE --build=x86_64-unknown-linux $E
                 --disable-projectm \
                 --disable-sout \
                 --disable-vorbis \
-                --disable-faad \
+                --enable-faad \
                 --disable-x264 \
+                --disable-postproc \
+                --disable-a52 \
+                --disable-libmpeg2 \
                 --disable-schroedinger --disable-dirac \
                 $*
